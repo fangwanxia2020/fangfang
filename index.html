@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div id='app'>
+         <h1>{{ msg }}</h1>
+         <router-link to="/login" tag='button'>登录</router-link>
+         <router-link to="/register" tag='button'>注册</router-link>
+         <router-view></router-view>
+     </div>                     
+     <script src='./js/vue.js'></script>
+    <script src='./js/vue-router.js'></script>
+     <script>
+
+         var index = {
+             template:'<h1>主路由</h1>'
+         };
+         var login = {
+            template:'<h1>登录界面</h1>'
+             
+         };
+         var register = {
+            template:'<h1>注册界面</h1>'
+             
+         };
+
+
+         var router = new VueRouter({
+             routes:[
+                 {path:"/",redirect:"/index"},
+                //  {
+                //      path:'/index',
+                //      component:index,
+                //     //  children:[
+                //     //      {path:'login',component:login},
+                //     //      {path:'register',component:register}
+                //     //  ]
+                //  },
+                 {path:'/login',component:login},
+                 {path:'/register',component:register},
+             ]
+         })
+         var vm = new Vue({
+             el : '#app',
+             data : {
+                 msg:'欢迎进入vue.js'
+             },
+             router
+         })
+     </script>
+</body>
+</html>
